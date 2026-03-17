@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sorry Baby</title>
+
+<style>
+body{
+    background:#ffd6e7;
+    font-family: Arial;
+    text-align:center;
+    margin-top:120px;
+    overflow: hidden; /* so moving buttons don't cause scrollbars */
+}
+
+h1{
+    color:#cc0066;
+}
+
+button{
+    padding:15px 35px;
+    font-size:22px;
+    border:none;
+    border-radius:12px;
+    margin:15px;
+    cursor:pointer;
+    position: relative;
+    transition:0.3s;
+}
+
+#yesBtn{
+    background:green;
+    color:white;
+}
+
+#noBtn{
+    background:red;
+    color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>I'm really sorry baby 🥺</h1>
+<h2>Please forgive me… I didn't mean to hurt you</h2>
+
+<button id="yesBtn">Okay ❤️</button>
+<button id="noBtn">No</button>
+
+<script>
+
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+
+let size = 1;
+
+let messages = [
+"Please baby 🥺",
+"Babu please forgive me",
+"Cutie don't stay angry",
+"Please don't break my heart",
+"I promise I won't hurt you again",
+"Baby please say yes",
+"You mean a lot to me",
+"I really miss your smile",
+"Please give me one chance",
+"Don't stay angry babu 😭",
+"Pretty please baby",
+"I'll make it up to you"
+];
+
+let index = 0;
+
+// Function to move the No button randomly
+function moveNoButton(){
+    let x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+    let y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("click", function(){
+    // Change message
+    noBtn.innerText = messages[index];
+    index = (index + 1) % messages.length;
+
+    // Move No button randomly
+    moveNoButton();
+
+    // Make Yes button grow
+    size += 0.35;
+    yesBtn.style.transform = "scale(" + size + ")";
+});
+
+yesBtn.addEventListener("click", function(){
+    document.body.innerHTML =
+    "<h1>Thank you baby ❤️</h1><h2>I promise I'll make you smile again 🥺</h2>";
+});
+
+</script>
+
+</body>
+</html>
